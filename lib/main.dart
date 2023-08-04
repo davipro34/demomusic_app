@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Hero Animation Music Demo',
       home: FirstPage(),
     );
@@ -19,6 +20,8 @@ class MyApp extends StatelessWidget {
 }
 
 class FirstPage extends StatelessWidget {
+  const FirstPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,10 +31,12 @@ class FirstPage extends StatelessWidget {
 }
 
 class GridSection extends StatelessWidget {
+  const GridSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ResponsiveGridList(
+      child: const ResponsiveGridList(
         minSpacing: 10,
         desiredItemWidth: 150, 
         children: [
@@ -82,7 +87,14 @@ class AlbumCover extends StatelessWidget {
     return Container(
       child: GestureDetector(
         onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => SecondPage()),
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AlbumPage(
+                albumTag: albumTag,
+                albumUrl: albumUrl,
+              )
+            ),
           );
         },
         child: Hero(
@@ -94,14 +106,18 @@ class AlbumCover extends StatelessWidget {
   }
 }
 
-class SecondPage extends StatelessWidget {
+class AlbumPage extends StatelessWidget {
+  final String albumUrl;
+  final String albumTag;
+  const AlbumPage({super.key, required this.albumUrl, required this.albumTag});
+
     @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.black),
       body: Hero(
-        tag: 'album-image',
-        child: Image.network("https://img.ohmymag.com/article/musique/pochette-de-l-album-des-pink-floyd-dark-of-the-moon_52798d7562d1aa0907e1c57e5ed4216c397ba79e.jpg"),
+        tag: albumTag,
+        child: Image.network(albumUrl),
       ),
     );
   }
