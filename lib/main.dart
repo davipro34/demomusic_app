@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_grid/responsive_grid.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,14 +22,24 @@ class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          height: 300,
-          width: 300,
+      body: GridSection(),
+    );
+  }
+}
+
+class GridSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ResponsiveGridList(
+        minSpacing: 10,
+        desiredItemWidth: 150, 
+        children: [
+          Container(
           child: GestureDetector(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => SecondPage()),
-            );
+              );
             },
             child: Hero(
               tag: 'album-image',
@@ -36,9 +47,11 @@ class FirstPage extends StatelessWidget {
             ),
           ),
         ),
+        ],
       ),
     );
   }
+
 }
 
 class SecondPage extends StatelessWidget {
