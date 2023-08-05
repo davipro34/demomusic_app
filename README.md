@@ -1,4 +1,4 @@
-# demosocial_app
+# demomusic_app
 
 A demo music app written with Flutter.
 
