@@ -226,7 +226,19 @@ class AlbumPage extends StatelessWidget {
     @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.black),
+      appBar: AppBar(
+        elevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.favorite,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          ),
+        ],
+        backgroundColor: Colors.black.withOpacity(0.4),
+      ),
       body: Hero(
         tag: albumTag,
         child: Image.network(albumUrl),
