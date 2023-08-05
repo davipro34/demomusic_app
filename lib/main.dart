@@ -98,6 +98,8 @@ class GridSection extends StatelessWidget {
         minSpacing: 10,
         desiredItemWidth: 150, 
         children: [
+          SizedBox(height: 10),
+          SizedBox(height: 10),
           AlbumCover(
           albumUrl:
               'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRr4Q776RctXur78Z4NaMRrdh7-_2CZ7wDdBg&usqp=CAU',
