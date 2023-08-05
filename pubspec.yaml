@@ -63,6 +63,13 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/Starboy.jpg
+    - assets/images/Born_to_die.jpg
+    - assets/images/Overexposed.jpg
+    - assets/images/Dark_Side.jpg
+    - assets/images/1989.jpg
+    - assets/images/Thriller.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

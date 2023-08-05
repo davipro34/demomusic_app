@@ -102,37 +102,37 @@ class GridSection extends StatelessWidget {
           SizedBox(height: 10),
           AlbumCover(
           albumUrl:
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRr4Q776RctXur78Z4NaMRrdh7-_2CZ7wDdBg&usqp=CAU',
+              'assets/images/Starboy.jpg',
           albumName: 'Starboy',
           albumArtist: 'The WeekEnd',
           ),
           AlbumCover(
             albumUrl:
-              'https://i.pinimg.com/236x/26/eb/e9/26ebe9788b358c734a2851048d05b12c--pop-albums-music-albums.jpg',
+              'assets/images/Born_to_die.jpg',
             albumName: 'Born to die',
             albumArtist: 'Lana Del Rey',
           ),
           AlbumCover(
             albumUrl:
-              'https://i.pinimg.com/originals/6a/65/a1/6a65a167095e5f930b5569b276818213.jpg',
+              'assets/images/Overexposed.jpg',
             albumName: 'Overexposed',
             albumArtist: 'Maroon 5'
           ),
           AlbumCover(
             albumUrl:
-              'https://images-na.ssl-images-amazon.com/images/I/31tZr4Nr5vL._AC_SY450_.jpg',
+              'assets/images/Dark_Side.jpg',
             albumName: 'Dark Side',
             albumArtist: 'Pink Floyd'
           ),
           AlbumCover(
             albumUrl:
-              'https://static.billboard.com/files/media/Taylor-Swift-1989-album-covers-billboard-1000x1000-compressed.jpg',
+              'assets/images/1989.jpg',
             albumName: '1989',
             albumArtist: 'Taylor Swift',
           ),
           AlbumCover(
             albumUrl:
-              'https://img.huffingtonpost.com/asset/5badb5be200000e500ff1775.jpeg?ops=scalefit_630_noupscale',
+              'assets/images/Thriller.jpeg',
             albumName: 'Thriller',
             albumArtist: 'Michael Jackson',
           ),
@@ -187,7 +187,7 @@ class AlbumCover extends StatelessWidget {
             children: [
               Hero(
                 tag: albumName,
-                child: Image.network(albumUrl),
+                child: Image.asset(albumUrl),
               ),
               Container(
                 padding: const EdgeInsets.all(15),
@@ -251,7 +251,7 @@ class AlbumPage extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: NetworkImage(
+                      image: AssetImage(
                         albumUrl,
                       ),
                       fit: BoxFit.cover),
