@@ -282,7 +282,7 @@ class AlbumPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  //playButton,
+                  playButton,
                 ],
               ),
             ),
@@ -293,3 +293,26 @@ class AlbumPage extends StatelessWidget {
     );
   }
 }
+
+Widget playButton = Container(
+  padding: const EdgeInsets.all(5),
+  decoration: BoxDecoration(
+    color: Colors.black,
+    borderRadius: BorderRadius.circular(30),
+    boxShadow: [
+      BoxShadow(
+        spreadRadius: 1,
+        blurRadius: 3,
+        offset: const Offset(0, 2),
+        color: Colors.black.withOpacity(0.3),
+      )
+    ],
+  ),
+  child: const IconButton(
+      icon: Icon(
+        Icons.play_arrow,
+        color: Colors.white,
+        size: 25,
+      ),
+      onPressed: null),
+);
