@@ -14,18 +14,76 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Hero Animation Music Demo',
-      home: FirstPage(),
+      home: TabsPage(),
     );
   }
 }
 
-class FirstPage extends StatelessWidget {
-  const FirstPage({super.key});
+class TabsPage extends StatefulWidget {
+  const TabsPage({super.key});
+
+  @override
+  State<TabsPage> createState() => _TabsPageState();
+}
+
+class _TabsPageState extends State<TabsPage> {
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: GridSection(),
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+            Icons.search,
+            color: Colors.grey,
+          ),
+          onPressed: () {},
+        ),
+        title: const Text(
+          'Search library',
+          style: TextStyle(color: Colors.grey),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.list,
+              color: Colors.black,
+            ),
+            onPressed: () {},
+          ),
+        ],
+        backgroundColor: Colors.white,
+      ),
+      body: const Center(
+        child: GridSection(),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.library_music),
+            label: 'Library',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.radio),
+            label: 'Radio',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
+        backgroundColor: Colors.deepPurple.shade700,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
