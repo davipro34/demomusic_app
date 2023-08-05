@@ -286,7 +286,7 @@ class AlbumPage extends StatelessWidget {
                 ],
               ),
             ),
-            //songsList,
+            songsList,
           ],
         ),
       ),
@@ -316,3 +316,52 @@ Widget playButton = Container(
       ),
       onPressed: null),
 );
+
+Widget songsList = const Column(
+  children: [
+    SongLine(songDuration: '0:37', songName: 'First', songNb: '1'),
+    SongLine(songDuration: '2:10', songName: 'Second', songNb: '2'),
+    SongLine(songDuration: '2:77', songName: 'Third', songNb: '3'),
+    SongLine(songDuration: '4:54', songName: 'Fourth', songNb: '4'),
+    SongLine(songDuration: '3:39', songName: 'Fifth', songNb: '5'),
+    SongLine(songDuration: '2:23', songName: 'Sixth', songNb: '6'),
+  ],
+);
+
+class SongLine extends StatelessWidget {
+  final String songNb;
+  final String songName;
+  final String songDuration;
+  const SongLine(
+      {Key? key,
+      required this.songNb,
+      required this.songName,
+      required this.songDuration})
+      : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(20, 17, 20, 17),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            margin: const EdgeInsets.fromLTRB(0, 0, 30, 0),
+            child: const Icon(Icons.volume_up, color: Colors.grey, size: 25),
+          ),
+          Expanded(
+            child: Row(
+              children: [
+                Text(songNb,
+                    style: const TextStyle(color: Colors.grey, fontSize: 18)),
+                const SizedBox(width: 30),
+                Text(songName, style: const TextStyle(fontSize: 18)),
+              ],
+            ),
+          ),
+          Text(songDuration, style: const TextStyle(fontSize: 18)),
+        ],
+      ),
+    );
+  }
+}
