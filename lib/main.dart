@@ -103,32 +103,38 @@ class GridSection extends StatelessWidget {
           AlbumCover(
           albumUrl:
               'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRr4Q776RctXur78Z4NaMRrdh7-_2CZ7wDdBg&usqp=CAU',
-          albumTag: 'Starboy',
+          albumName: 'Starboy',
+          albumArtist: 'The WeekEnd',
           ),
           AlbumCover(
             albumUrl:
               'https://i.pinimg.com/236x/26/eb/e9/26ebe9788b358c734a2851048d05b12c--pop-albums-music-albums.jpg',
-            albumTag: 'Born to die',
+            albumName: 'Born to die',
+            albumArtist: 'Lana Del Rey',
           ),
           AlbumCover(
             albumUrl:
               'https://i.pinimg.com/originals/6a/65/a1/6a65a167095e5f930b5569b276818213.jpg',
-            albumTag: 'Overexposed',
+            albumName: 'Overexposed',
+            albumArtist: 'Maroon 5'
           ),
           AlbumCover(
             albumUrl:
               'https://images-na.ssl-images-amazon.com/images/I/31tZr4Nr5vL._AC_SY450_.jpg',
-            albumTag: 'Dark Side',
+            albumName: 'Dark Side',
+            albumArtist: 'Pink Floyd'
           ),
           AlbumCover(
             albumUrl:
               'https://static.billboard.com/files/media/Taylor-Swift-1989-album-covers-billboard-1000x1000-compressed.jpg',
-            albumTag: '1989',
+            albumName: '1989',
+            albumArtist: 'Taylor Swift',
           ),
           AlbumCover(
             albumUrl:
               'https://img.huffingtonpost.com/asset/5badb5be200000e500ff1775.jpeg?ops=scalefit_630_noupscale',
-            albumTag: 'Thriller',
+            albumName: 'Thriller',
+            albumArtist: 'Michael Jackson',
           ),
         ],
       ),
@@ -138,28 +144,70 @@ class GridSection extends StatelessWidget {
 
 class AlbumCover extends StatelessWidget {
   final String albumUrl;
-  final String albumTag;
+  final String albumName;
+  final String albumArtist;
 
-  const AlbumCover({super.key, required this.albumUrl, required this.albumTag});
+  const AlbumCover({super.key, required this.albumUrl, required this.albumName, required this.albumArtist});
   
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AlbumPage(
-                albumTag: albumTag,
-                albumUrl: albumUrl,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(7),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: 1,
+            blurRadius: 3,
+            offset: const Offset(0, 2),
+            color: Colors.black.withOpacity(0.3),
+          )
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(7),
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AlbumPage(
+                  albumUrl: albumUrl,
+                  albumTag: albumName,
+                  albumName: albumName,
+                  albumArtist: albumArtist,
+                ),
+              ),
+            );
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Hero(
+                tag: albumName,
+                child: Image.network(albumUrl),
+              ),
+              Container(
+                padding: const EdgeInsets.all(15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      albumName,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                          fontSize: 19, fontWeight: FontWeight.w700),
+                    ),
+                    Text(
+                      albumArtist,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontSize: 16, color: Colors.grey),
+                    ),
+                  ],
+                ),
               )
-            ),
-          );
-        },
-        child: Hero(
-          tag: albumTag,
-          child: Image.network(albumUrl),
+            ],
+          ),
         ),
       ),
     );
@@ -169,7 +217,9 @@ class AlbumCover extends StatelessWidget {
 class AlbumPage extends StatelessWidget {
   final String albumUrl;
   final String albumTag;
-  const AlbumPage({super.key, required this.albumUrl, required this.albumTag});
+  final String albumArtist;
+  final String albumName;
+  const AlbumPage({super.key, required this.albumUrl, required this.albumTag, required this.albumArtist, required this.albumName});
 
     @override
   Widget build(BuildContext context) {
