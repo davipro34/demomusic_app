@@ -136,6 +136,8 @@ class GridSection extends StatelessWidget {
             albumName: 'Thriller',
             albumArtist: 'Michael Jackson',
           ),
+          SizedBox(height: 10),
+          SizedBox(height: 10),
         ],
       ),
     );
