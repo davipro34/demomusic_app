@@ -240,9 +240,55 @@ class AlbumPage extends StatelessWidget {
         ],
         backgroundColor: Colors.black.withOpacity(0.4),
       ),
-      body: Hero(
-        tag: albumTag,
-        child: Image.network(albumUrl),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Hero(
+              tag: albumTag,
+              child: Container(
+                width: double.infinity,
+                height: 400.0,
+                alignment: Alignment.topCenter,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(
+                        albumUrl,
+                      ),
+                      fit: BoxFit.cover),
+                ),
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.fromLTRB(70, 30, 20, 30),
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+              color: Colors.deepPurple[700],
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        albumName,
+                        overflow: TextOverflow.ellipsis,
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 30),
+                      ),
+                      Text(
+                        albumArtist,
+                        style: const TextStyle(
+                            color: Colors.white60, fontSize: 17),
+                      ),
+                    ],
+                  ),
+                  //playButton,
+                ],
+              ),
+            ),
+            //songsList,
+          ],
+        ),
       ),
     );
   }
